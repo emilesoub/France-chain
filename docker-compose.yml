@@ -1,0 +1,19 @@
+services:
+  cosmosdb-emulator:
+    # L'image Docker officielle de l'émulateur [cite: 78, 79]
+    image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-preview
+    [cite_start]hostname: cosmos-emulator # Un nom d'hôte fixe pour faciliter la communication [cite: 85]
+    environment:
+      # Force l'utilisation du protocole HTTPS, requis par certains SDK [cite: 82]
+      PROTOCOL: https
+    ports:
+      # On expose les ports pour pouvoir y accéder depuis Gitpod
+      - [cite_start]"8081:8081" # L'API pour que votre application se connecte [cite: 80]
+      - [cite_start]"1234:1234" # L'explorateur de données pour visualiser vos données [cite: 80]
+    volumes:
+      # Ce volume permet de garder vos données même si vous redémarrez l'espace de travail [cite: 83, 197, 198]
+      - cosmosdb_data:/data
+
+volumes:
+  # On déclare officiellement le volume pour que Docker le gère [cite: 206]
+  cosmosdb_data:
