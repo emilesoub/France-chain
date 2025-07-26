@@ -1,8 +1,6 @@
-# 'image' commence au début de la ligne
 image:
   file: .gitpod.Dockerfile
 
-# 'tasks' commence au début de la ligne
 tasks:
   - name: Dépendances et Services
     init: |
@@ -22,10 +20,8 @@ tasks:
       echo "Certificat installé avec succès."
       npm start
 
-# 'ports' commence aussi au début de la ligne
 ports:
-  # Chaque port (commençant par '-') est indenté de deux espaces
-  - [cite_start]port: 3000 # [cite: 127]
+  - port: 3000
     onOpen: open-preview
   - port: 8081
     onOpen: ignore
